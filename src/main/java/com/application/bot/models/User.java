@@ -1,16 +1,24 @@
-package com.application.bot.model;
+package com.application.bot.models;
+
+import java.math.BigInteger;
 
 public class User {
 
-    private int id;
+    private BigInteger id;
     private String username;
     private boolean isBot;
 
-    public int getId() {
+    public User(BigInteger id, String username, boolean isBot) {
+        this.id = id;
+        this.username = username;
+        this.isBot = isBot;
+    }
+
+    public BigInteger getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(BigInteger id) {
         this.id = id;
     }
 
