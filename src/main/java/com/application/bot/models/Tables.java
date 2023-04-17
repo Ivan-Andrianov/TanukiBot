@@ -3,6 +3,7 @@ package com.application.bot.models;
 import org.springframework.stereotype.Component;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,6 +18,7 @@ public class Tables {
     }
 
     public void addUserInTable(int numberOfTable,BigInteger idOfUser){
+        mapOfTables.putIfAbsent(numberOfTable,new ArrayList<>());
         mapOfTables.get(numberOfTable).add(idOfUser);
     }
 

@@ -69,7 +69,7 @@ public class UpdatesParser {
             try {
                 URL url = new URL("https://api.telegram.org/bot5832019176:AAHJiWrYXI4L8PmseIBuN-Yi4v2cwvqp0Ms/sendMessage?text="+text+"&chat_id="+user.getId());
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                connection.setRequestMethod("POST");
+                connection.getInputStream();
             } catch (MalformedURLException e) {
                 throw new RuntimeException(e);
             } catch (IOException e) {
@@ -114,8 +114,10 @@ public class UpdatesParser {
                 sb.append("Столик: "+i+"%0A");
             }
             try {
-                new URL("https://api.telegram.org/bot5832019176:AAHJiWrYXI4L8PmseIBuN-Yi4v2cwvqp0Ms/sendMessage?text="+sb+"&chat_id="+user.getId());
+                new URL("https://api.telegram.org/bot5832019176:AAHJiWrYXI4L8PmseIBuN-Yi4v2cwvqp0Ms/sendMessage?text="+sb+"&chat_id="+user.getId()).openConnection().getInputStream();
             } catch (MalformedURLException e) {
+                throw new RuntimeException(e);
+            } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
@@ -131,7 +133,7 @@ public class UpdatesParser {
 
         for (BigInteger id:tables.getListOfUsersIdByNumberOfTable(numberOfTable)){
             try {
-                new URL("https://api.telegram.org/bot5832019176:AAHJiWrYXI4L8PmseIBuN-Yi4v2cwvqp0Ms/sendMessage?text="+message.getText()+"&chat_id="+id).openConnection();
+                new URL("https://api.telegram.org/bot5832019176:AAHJiWrYXI4L8PmseIBuN-Yi4v2cwvqp0Ms/sendMessage?text="+message.getText()+"&chat_id="+id).openConnection().getInputStream();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
